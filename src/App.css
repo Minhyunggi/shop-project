@@ -39,3 +39,9 @@
 .nav-bar {
   padding-left: -15px;
 }
+.main-box {
+  height: 300px;
+  background-image: url("/src/bg.png");
+  background-size: cover;
+  background-position: center;
+}
