@@ -1,6 +1,10 @@
 import "./App.css";
 import { Col, Row, Button, Navbar, Container, Nav } from "react-bootstrap";
+import { useState } from "react";
+import data from "./data.js";
 function App() {
+  let [shoes] = useState(data);
+
   return (
     <div className="App">
       <Navbar bg="primary" variant="dark" className="nav-bar">
@@ -16,34 +20,30 @@ function App() {
       <div className="main-box"></div>
       <Container>
         <Row>
-          <Col>
-            <img
-              src="https://codingapple1.github.io/shop/shoes1.jpg"
-              width="80%"
-            />
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </Col>
-          <Col>
-            <img
-              src="https://codingapple1.github.io/shop/shoes2.jpg"
-              width="80%"
-            />
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </Col>
-          <Col>
-            <img
-              src="https://codingapple1.github.io/shop/shoes3.jpg"
-              width="80%"
-            />
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </Col>
+          <Com shoes={shoes}></Com>
+          <Com shoes={shoes}></Com>
+          <Com shoes={shoes}></Com>
         </Row>
       </Container>
     </div>
   );
 }
 
+function Com(props) {
+  let [shoes] = useState(data);
+  {
+    shoes.map(function (a, i) {
+      return (
+        <Col>
+          <img
+            src="https://codingapple1.github.io/shop/shoes1.jpg"
+            width="80%"
+          />
+          <h4>{props.shoes[0].title}</h4>
+          <p>{props.shoes[0].price}원</p>
+        </Col>
+      );
+    });
+  }
+}
 export default App;
