@@ -2,6 +2,7 @@ import "./App.css";
 import { Col, Row, Button, Navbar, Container, Nav } from "react-bootstrap";
 import { useState } from "react";
 import data from "./data.js";
+import { Routes, Route, Link } from "react-router-dom";
 
 function App() {
   const [shoes] = useState(data);
@@ -22,16 +23,31 @@ function App() {
         <Container>
           <Navbar.Brand href="#home">쇼핑몰</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">홈</Nav.Link>
-            <Nav.Link href="#features">쇼핑</Nav.Link>
-            <Nav.Link href="#pricing">장바구니</Nav.Link>
+            <Link className="main-page" to="/">
+              메인페이지
+            </Link>
+            <Link className="detail-page" to="/detail">
+              상세페이지
+            </Link>
           </Nav>
         </Container>
       </Navbar>
-      <div className="main-box"></div>
-      <Container>
-        <Row>{shoesList}</Row>
-      </Container>
+
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              {" "}
+              <div className="main-box"></div>
+              <Container>
+                <Row>{shoesList}</Row>
+              </Container>
+            </>
+          }
+        />
+        <Route path="/detail" element={<div>상세페이지</div>} />
+      </Routes>
     </div>
   );
 }
