@@ -2,8 +2,19 @@ import "./App.css";
 import { Col, Row, Button, Navbar, Container, Nav } from "react-bootstrap";
 import { useState } from "react";
 import data from "./data.js";
+
 function App() {
-  let [shoes] = useState(data);
+  const [shoes] = useState(data);
+  const shoesList = shoes.map((a, i) => (
+    <div className="col-md-4" key={i}>
+      <img
+        src={"https://codingapple1.github.io/shop/shoes" + (i + 1) + ".jpg"}
+        width="80%"
+      />
+      <h4>{shoes[i].title}</h4>
+      <p>{shoes[i].price}</p>
+    </div>
+  ));
 
   return (
     <div className="App">
@@ -19,31 +30,10 @@ function App() {
       </Navbar>
       <div className="main-box"></div>
       <Container>
-        <Row>
-          <Com shoes={shoes}></Com>
-          <Com shoes={shoes}></Com>
-          <Com shoes={shoes}></Com>
-        </Row>
+        <Row>{shoesList}</Row>
       </Container>
     </div>
   );
 }
 
-function Com(props) {
-  let [shoes] = useState(data);
-  {
-    shoes.map(function (a, i) {
-      return (
-        <Col>
-          <img
-            src="https://codingapple1.github.io/shop/shoes1.jpg"
-            width="80%"
-          />
-          <h4>{props.shoes[0].title}</h4>
-          <p>{props.shoes[0].price}원</p>
-        </Col>
-      );
-    });
-  }
-}
 export default App;
