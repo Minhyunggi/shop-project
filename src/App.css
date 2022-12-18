@@ -52,3 +52,8 @@
 .detail-page {
   color: white;
 }
+.link{
+  color: white;
+  margin-left: 15px;
+  text-decoration: none;
+}
