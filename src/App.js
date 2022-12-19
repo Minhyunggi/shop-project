@@ -2,8 +2,9 @@ import "./App.css";
 import { Col, Row, Button, Navbar, Container, Nav } from "react-bootstrap";
 import { useState } from "react";
 import data from "./data.js";
-import { Card, Detail } from "./component.js";
-import { Routes, Route, Link } from "react-router-dom";
+import Card from "./component/Card.js";
+import Detail from "./component/Detail.js";
+import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 function App() {
   const [shoes] = useState(data);
 
@@ -38,9 +39,21 @@ function App() {
           }
         ></Route>
         <Route path="/detail" element={<Detail></Detail>}></Route>
+        <Route path="*" element={<div>없는페이지</div>}></Route>
+        <Route path="/event" element={<Event></Event>}>
+          <Route path="one" element={<p>첫 주문시 양배추즙 서비스</p>}></Route>
+          <Route path="two" element={<p>생일기념 쿠폰받기</p>}></Route>
+        </Route>
       </Routes>
     </div>
   );
 }
-
+function Event() {
+  return (
+    <div>
+      <h1>오늘의 이벤트</h1>
+      <Outlet></Outlet>
+    </div>
+  );
+}
 export default App;
