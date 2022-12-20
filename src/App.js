@@ -38,12 +38,11 @@ function App() {
             </>
           }
         ></Route>
-        <Route path="/detail" element={<Detail></Detail>}></Route>
+        <Route
+          path="/detail/:id"
+          element={<Detail shoes={shoes}></Detail>}
+        ></Route>
         <Route path="*" element={<div>없는페이지</div>}></Route>
-        <Route path="/event" element={<Event></Event>}>
-          <Route path="one" element={<p>첫 주문시 양배추즙 서비스</p>}></Route>
-          <Route path="two" element={<p>생일기념 쿠폰받기</p>}></Route>
-        </Route>
       </Routes>
     </div>
   );
